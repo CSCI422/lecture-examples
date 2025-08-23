@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSCI422 | Schedule</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="breadcrumbs">
+      <p><a href="./index.html">CSCI422</a> / Schedule</p>
+    </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <p>View the schedule after seeing a sponsored ad.</p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/cA0Mad-fTuo?si=NzAAve2tQsQqCRkn&amp;controls=0?autoplay=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <div class="buttons">
+          <button id="bad-exit-button">Exit</button>
+          <button id="bad-continue-button">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Schedule</h2>
+    <iframe
+      style="width: 100%; height: 500px"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQC81MC1UIEzAoRsEakZ-E2mBzvfDVP5qgd8lbDrKAfqVFR02Nz-MHNpmh4Zbm8v3lre_5GAGc4bSoB/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+    ></iframe>
+
+    <div class="footer">
+      <p>CS@Mines &bull; 2025</p>
+      <p>
+        Made by <a href="https://github.com/ezrichards">ezrichards</a> &bull;
+        <a href="https://github.com/CSCI422/csci422.github.io">GitHub</a>
+      </p>
+      <p>Note: This page is a simulated bad design for an assignment</p>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
