@@ -11,7 +11,7 @@
       <p><a href="./index.html">CSCI422</a> / Assignments</p>
     </div>
 
-    <div style="margin-bottom: 2%;">
+    <div style="margin-bottom: 10%;">
         <div class="assignment">
           <p>Intro Survey</p>
         </div>
@@ -42,8 +42,15 @@
       <p>Note: This page is a simulated bad design for an assignment</p>
     </div>
 
-    <!-- <script type="text/javascript">
-        document.body.style.cursor = 'none';
-    </script> -->
+    <script>
+      document.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        const scrollAmount = event.deltaY;
+        window.scrollTo({
+          top: window.scrollY - (scrollAmount * 1.5),
+          behavior: 'auto'
+        });
+      });
+    </script>
   </body>
 </html>
