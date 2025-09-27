@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background: #f9fafb;
+}
+
+h1 {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;          /* Flexbox! */
+  flex-wrap: wrap;        /* Allow wrapping to new lines */
+  gap: 10px;
+  justify-content: center;
+}
+
+.box {
+  background: #4ade80;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 40px 0;
+  border-radius: 8px;
+  flex: 1 1 150px;        /* Grow/shrink, min width 150px */
+  max-width: 200px;
+}
+
+.note {
+  margin-top: 1rem;
+  text-align: center;
+  color: #555;
+}

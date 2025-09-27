@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background: #f9fafb;
+}
+
+h1 {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;                 /* Using Grid, not Flexbox */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.box {
+  background: #38bdf8;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 40px 0;
+  border-radius: 8px;
+}
+
+/* Simple media query: force 2 columns on narrow screens */
+@media (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
