@@ -7,3 +7,6 @@ fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
     console.error("Error:", error);
   });
 
+const myFunction = () => {
+  console.log('hello, world!');
+}
