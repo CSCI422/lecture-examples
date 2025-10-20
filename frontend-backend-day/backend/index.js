@@ -1,6 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const PORT = 3000;
+
+// ✅ Allow requests from your React dev server
+app.use(cors({
+  origin: "http://localhost:5173",  // your frontend's URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+}));
 
 app.use(express.json());
 
