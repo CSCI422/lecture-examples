@@ -1,11 +1,16 @@
-// Simple Node.js + Express Backend for User Management
 const express = require("express");
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-// In-memory user storage (mock database)
+// Middleware to log every request (optional, global)
+app.use((req, res, next) => {
+  console.log(`🔹 [${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
+});
+
+// In-memory user storage
 let users = [
   { id: 1, name: "Alice Johnson", email: "alice@example.com", age: 28, role: "Designer" },
   { id: 2, name: "Bob Smith", email: "bob@example.com", age: 34, role: "Developer" },
@@ -21,23 +26,33 @@ let users = [
 
 // GET /users - get all users
 app.get("/users", (req, res) => {
+  console.log("📥 GET /users - Returning all users");
   res.json(users);
 });
 
 // GET /users/:id - get user by ID
 app.get("/users/:id", (req, res) => {
   const id = parseInt(req.params.id);
+  console.log(`📥 GET /users/${id} - Request for user ID: ${id}`);
   const user = users.find((u) => u.id === id);
-  if (!user) return res.status(404).json({ message: "User not found" });
+  if (!user) {
+    console.log(`⚠️ User with ID ${id} not found`);
+    return res.status(404).json({ message: "User not found" });
+  }
   res.json(user);
 });
 
 // POST /users - create new user
 app.post("/users", (req, res) => {
+  console.log("📤 POST /users - Creating a new user");
+  console.log("📝 Request body:", req.body);
+
   const { name, email, age, role } = req.body;
   if (!name || !email) {
+    console.log("❌ Missing required fields: name or email");
     return res.status(400).json({ message: "Name and email are required" });
   }
+
   const newUser = {
     id: users.length ? Math.max(...users.map((u) => u.id)) + 1 : 1,
     name,
@@ -46,14 +61,21 @@ app.post("/users", (req, res) => {
     role: role || "User",
   };
   users.push(newUser);
+  console.log(`✅ User created with ID ${newUser.id}`);
   res.status(201).json(newUser);
 });
 
-// UPDATE /users/:id - update existing user
+// PUT /users/:id - update existing user
 app.put("/users/:id", (req, res) => {
   const id = parseInt(req.params.id);
+  console.log(`🛠️ PUT /users/${id} - Updating user`);
+  console.log("📝 Request body:", req.body);
+
   const user = users.find((u) => u.id === id);
-  if (!user) return res.status(404).json({ message: "User not found" });
+  if (!user) {
+    console.log(`⚠️ User with ID ${id} not found`);
+    return res.status(404).json({ message: "User not found" });
+  }
 
   const { name, email, age, role } = req.body;
   if (name) user.name = name;
@@ -61,18 +83,25 @@ app.put("/users/:id", (req, res) => {
   if (age) user.age = age;
   if (role) user.role = role;
 
+  console.log(`✅ User with ID ${id} updated`);
   res.json(user);
 });
 
 // DELETE /users/:id - delete user by ID
 app.delete("/users/:id", (req, res) => {
   const id = parseInt(req.params.id);
+  console.log(`🗑️ DELETE /users/${id} - Deleting user`);
+
   const index = users.findIndex((u) => u.id === id);
-  if (index === -1) return res.status(404).json({ message: "User not found" });
+  if (index === -1) {
+    console.log(`⚠️ User with ID ${id} not found`);
+    return res.status(404).json({ message: "User not found" });
+  }
 
   const deleted = users.splice(index, 1);
+  console.log(`✅ User with ID ${id} deleted`);
   res.json({ message: "User deleted", user: deleted[0] });
 });
 
-// Start the server
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+// Start server
+app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
