@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import UserList from './UserList'
+import { IconChevronRight } from '@tabler/icons-react';
+import { Avatar, Group, Text, UnstyledButton } from '@mantine/core';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +12,27 @@ function App() {
   return (
     <>
       <UserList />
+      <UnstyledButton>
+      <Group>
+        <Avatar
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+          radius="xl"
+        />
+
+        <div style={{ flex: 1 }}>
+          <Text size="sm" fw={500}>
+            Example User
+          </Text>
+
+          <Text c="dimmed" size="xs">
+            exampleuser@outlook.com
+          </Text>
+        </div>
+
+        <IconChevronRight size={14} stroke={1.5} />
+      </Group>
+    </UnstyledButton>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
