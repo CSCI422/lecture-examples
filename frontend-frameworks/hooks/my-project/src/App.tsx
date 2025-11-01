@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
 
 function App() {
   const [count, setCount] = useState(0)
 
   // useEffect reacting to count changes:
   useEffect(() => {
-    if (count > 0) {
-      console.log(`Count changed: ${count}`)
+    const fetchData = async () => {
+      await axios.get("")
     }
+    fetchData();
   }, [count])
 
   return (

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import type { User } from "./types/User";
 
-const API_BASE_URL = "http://localhost:3000"; // Your Node.js backend URL
+const API_BASE_URL = "http://localhost:3000";
 
 export default function UserList() {
   const [users, setUsers] = useState<User[]>([]);
@@ -14,9 +14,9 @@ export default function UserList() {
         console.log("Fetching users from backend...");
         const response = await axios.get<User[]>(`${API_BASE_URL}/users`);
         setUsers(response.data);
-        console.log("✅ Users fetched successfully:", response.data);
+        console.log("Users fetched successfully:", response.data);
       } catch (error) {
-        console.error("❌ Error fetching users:", error);
+        console.error("Error fetching users:", error);
       } finally {
         setLoading(false);
       }
